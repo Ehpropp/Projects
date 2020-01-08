@@ -93,10 +93,7 @@ class PLAYER:     #Hold all player related functions
         self.game_over_height = game_over.get_height()
         self.start_text = horizontal / 2 - snake.game_over_width / 2
         self.end_text = horizontal / 2 + snake.game_over_width / 2
-        # thicc1, thicc2 = 2, 2
         screen.blit(game_over,(horizontal / 2 - self.game_over_width / 2, vertical / 2 - self.game_over_height / 2))
-        # for i in range(0,len(self.one_before_death)):
-        #     py.draw.rect(screen, colour_list[i], (self.one_before_death[i][0], self.one_before_death[i][1], self.len, self.wid), self.thick)
 
         mX, mY = py.mouse.get_pos()
         clicked = py.mouse.get_pressed()
@@ -135,7 +132,12 @@ class FOOD: # Holds all food related functions
                 good = True
         self.x = x
         self.y = y
-        self.colour = (ran.randint(0,255), ran.randint(0,255), ran.randint(0,255))
+        diff_colour = False
+        while not diff_colour:
+            self.colour = (ran.randint(0,255), ran.randint(0,255), ran.randint(0,255))
+            for i in range(0, snake.length):
+                if self.colour != colour_list[i]:
+                    diff_colour = True
         colour_list.append(self.colour)
         self.thick = 0
 
@@ -158,7 +160,6 @@ def death_buttons(thick1, thick2):
     screen.blit(play_render, (snake.end_text - x_dim/2 - play_width/2, 360))
     py.draw.rect(screen, RED, (snake.start_text, 350, x_dim, y_dim), thick1)
     py.draw.rect(screen, BLUE, (snake.end_text - x_dim, 350, x_dim, y_dim), thick2)
-    # print(thick1)
 
 snake = PLAYER()
 
@@ -168,12 +169,12 @@ while running:
     frame_rate = clock.tick(15) # Sets the frame rate
 
     fonts()
+    snake.draw()
 
     if food_list == []: # has a list with one item - food. Also created a new instance whenever the list is empty, which will make the new food appear in a new place
         food = FOOD()
         food_list.append(food)
 
-    snake.draw()
     food_list[0].draw() #calls the functions food.draw() bc balls is the list value
     death = snake.check_death()
     if not death:
