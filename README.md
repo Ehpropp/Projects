@@ -1,4 +1,4 @@
-# Snake Game
+# README
 
 This is the code I developed to play the snake game. I used the PyGame library for the GUI.
 
