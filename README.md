@@ -6,4 +6,4 @@ I added couple simple features: each food block is a unique colour (in that game
 
 Another feature I added was the ability to restart the game from the same window once the player dies. This makes it easier to keep playing instead of having to run the code again a separate time.
 
-Try downloading the code and playing yourself. Let me know what you think, or if you have any tips. I'de love to hear them. Enjoy!
+Try downloading the code and playing yourself. Let me know what you think, or if you have any tips. I'd love to hear them. Enjoy!
