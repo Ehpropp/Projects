@@ -1,3 +1,5 @@
+#Overview
+
 This is the code I developed to play the snake game. I used the PyGame library for the GUI.
 
 I added couple simple features: each food block is a unique colour (in that game), and when eaten, the tail piece appended to the snake is that same colour. It makes for some pretty cool designs!
